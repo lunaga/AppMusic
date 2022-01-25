@@ -1,4 +1,7 @@
 {% extends 'AppMusic/padre.html' %}
+{% load static %}
+
+
 
 {% block titulo %}
 
@@ -12,4 +15,119 @@
 
 <h2>Aqui se encuentran todas los albumes: </h2>
 
+    {% for album in albumes %} 
+
+       {{ album }}
+
+    <br>
+
+    {% endfor %}
+
 {% endblock %}
+
+{% block imagenes %}
+
+
+<div id="gallery" class="Gallery">
+   <div class="container"> 
+     <div class="row display_boxflex">
+       <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
+         <div class="row">
+           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 margi_bott">
+             <div class="Gallery_img">
+               <figure><img src="{% static 'AppMusic/images/rh.jpg' %}" alt="#"/></figure>
+             </div>
+             <div class="hover_box">
+              
+               <ul class="icon_hu">
+                  <h3>Music night</h3>
+                 <li><a href="#"><img src="{% static 'AppMusic/icon/h.png' %}" alt="#"/></a></li>
+                  <li><a href="#"><img src="{% static 'AppMusic/icon/h.png' %}" alt="#"/></a></li>
+               </ul>
+             </div>
+           </div>
+           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 margi_bott">
+             <div class="Gallery_img">
+               <figure><img src="{% static 'AppMusic/images/album3.jpg' %}" alt="#"/></figure>
+             </div>
+             <div class="hover_box">
+              
+               <ul class="icon_hu">
+                  <h3>Music night</h3>
+                 <li><a href="#"><img src="{% static 'AppMusic/icon/h.png' %}" alt="#"/></a></li>
+                  <li><a href="#"><img src="{% static 'AppMusic/icon/h.png' %}" alt="#"/></a></li>
+               </ul>
+             </div>
+           </div>
+           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 margi_bott1">
+             <div class="Gallery_img">
+               <figure><img src="{% static 'AppMusic/images/album2.jpg' %}" alt="#"/></figure>
+             </div>
+             <div class="hover_box">
+              
+               <ul class="icon_hu">
+                  <h3>Music night</h3>
+                 <li><a href="#"><img src="{% static 'AppMusic/icon/h.png' %}" alt="#"/></a></li>
+                  <li><a href="#"><img src="{% static 'AppMusic/icon/h.png' %}" alt="#"/></a></li>
+               </ul>
+             </div>
+           </div>
+           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+             <div class="Gallery_img">
+               <figure><img src="{% static 'AppMusic/images/album4.jpg' %}" alt="#"/></figure>
+             </div>
+             <div class="hover_box">
+              
+               <ul class="icon_hu">
+                  <h3>Music night</h3>
+                 <li><a href="#"><img src="{% static 'AppMusic/icon/h.png' %}" alt="#"/></a></li>
+                  <li><a href="#"><img src="{% static 'AppMusic/icon/h.png' %}" alt="#"/></a></li>
+               </ul>
+             </div>
+           </div>
+         </div>
+       </div>
+       <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+         <div class="Gallery_text">
+           <div class="titlepage">
+             <h2>Galeria</h2>
+           </div>
+           <p>Dentro de la galeria podran verse fotos y videos de sus conciertos y presentaciones</p>
+           <a href="Javascript:void(0)">Read More</a>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ 
+
+{% endblock %}
+
+
+{% block up %}
+
+
+<div id="upcoming" class="upcoming">
+   <div class="container-fluid padding_left3">
+     <div class="row display_boxflex">
+       <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
+        <div class="box_text">
+           <div class="titlepage">
+             <h2>Upcoming Concerts</h2>
+           </div>
+           <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it lookIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look</p>
+           <a href="Javascript:void(0)">Read More</a>
+         </div>
+       </div> 
+     
+       <div class="col-xl-7 col-lg-7 col-md-7 col-sm-12 border_right">
+          <div class="upcomimg">
+            <figure><img src="{% static 'AppMusic/images/rh.jpg' %}" alt="#"/></figure>
+         </div>
+           </div>
+   </div>
+     </div>
+ </div>
+ 
+ {% endblock %} 
+ 
