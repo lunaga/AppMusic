@@ -43,7 +43,7 @@ def album_formulario(request):
         if formulario.is_valid():
             data = formulario.cleaned_data
             Album.objects.create(fecha_lanzamiento=data ['fecha_lanzamiento'], nombre_album=data ['nombre_album'], canciones=data['canciones'])
-            return redirect('album')
+            return redirect('albumes')
     else:
         formulario = AlbumForm()
     return render(request, 'AppMusic/albumformulario.html', {'formulario' : formulario})

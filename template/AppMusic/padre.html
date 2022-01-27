@@ -63,12 +63,12 @@
                 <div class="limit-box">
                   <nav class="main-menu ">
                     <ul class="menu-area-main">
-                      <li class="active"> <a href="inicio">Inicio</a> </li>
+                      <li class="active"> <a href="{% url 'inicio' %}">Inicio</a> </li>
                   
-                      <li> <a class="navbar-brand" href="bandas">Bandas</a> </li>
-                      <li> <a class="navbar-brand" href="album">Album </a> </li>
-                      <li> <a class="navbar-brand" href="integrantes">Integrantes</a> </li>
-                      <li> <a class="navbar-brand" href="biografia">Biografia</a> </li>
+                      <li> <a class="navbar-brand" href="{% url 'bandas' %}">Bandas</a> </li>
+                      <li> <a class="navbar-brand" href="{% url 'albumes' %}">Album </a> </li>
+                      <li> <a class="navbar-brand" href="{% url 'integrantes_n' %}">Integrantes</a> </li>
+                      <li> <a class="navbar-brand" href="{% url 'biografia' %}">Biografia</a> </li>
       
                         <li > <a   href="#contact">login</a> </li>
                       <li  > <a  class="last_manu" href="#"><img src="{% static 'AppMusic/images/search_icon.png' %}" alt="#" /></a> </li>
