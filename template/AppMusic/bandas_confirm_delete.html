@@ -1,0 +1,26 @@
+{% extends 'AppMusic/padre.html' %}
+{% load static %}
+
+
+{% block contenidoquecambia %}
+
+<h3>Desea realmente borrar la banda?</h3>      
+         <input type="submit" value="Borar">
+
+<form action="" method="POST"> 
+
+    {% csrf_token %}
+
+         <ul>
+            <li>Nombre: {{banda.Nombre_banda}} </li>
+            <li>Nombre: {{banda.nacimiento_banda}} </li>
+            <li>Nombre: {{banda.ubicacion}} </li>
+            <li>Nombre: {{banda.email}} </li>
+        
+         </ul>
+         
+
+    </form>
+
+    
+{% endblock %}

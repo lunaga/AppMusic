@@ -1,0 +1,14 @@
+{% extends 'AppMusic/padre.html' %}
+{% load static %}
+
+{% block contenidoquecambia %}
+
+<ul>
+    <li>Nombre: {{banda.Nombre_banda}} </li>
+    <li>Nacimiento: {{banda.nacimiento_banda}} </li>
+    <li>Ubicacione: {{banda.ubicacion}} </li>
+    <li>Email: {{banda.email}} </li>
+</ul>
+
+
+{% endblock %}

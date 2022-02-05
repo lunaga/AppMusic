@@ -1,0 +1,24 @@
+{% extends 'AppMusic/padre.html' %}
+{% load static %}
+
+{% block titulo %}
+
+   Login
+
+{% endblock %}
+
+{% block contenidoquecambia %} 
+    <form action="" method='POST'>
+        {% csrf_token %}
+        <table>
+
+            {{ form.as_table }}
+
+        </table>
+        <input type="submit" value="Crear usuario"> 
+    </form>
+    <a href="{% url 'inicio' %}">Volver a la pagina principal</a>
+
+    <figure><img src="{% static 'AppMusic/images/register.jpg' %}" alt="#"/></figure>
+
+{% endblock %}

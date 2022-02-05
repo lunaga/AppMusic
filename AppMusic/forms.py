@@ -17,3 +17,8 @@ class AlbumForm(Form):
 class IntegrantesForm(Form):
     integrantes = CharField ()
     especializacion = CharField()
+    
+class BiografiaForm(Form):
+    inicios = CharField()
+    genero = CharField()
+    links_banda = CharField()

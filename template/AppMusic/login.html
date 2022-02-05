@@ -1,0 +1,27 @@
+{% extends 'AppMusic/padre.html' %}
+{% load static %}
+
+{% block titulo %}
+
+   Login
+
+{% endblock %}
+
+    <title>Login</title>
+
+    {% block contenidoquecambia %}   
+    <form action="" method='POST'>
+        {% csrf_token %}
+        <table>
+
+            {{ form.as_table }}
+
+        </table>
+        <input type="submit" value="Iniciar sesión"> 
+    </form>
+
+    <a href="{% url 'register' %}">Registrarse</a>
+
+    <figure><img src="{% static 'AppMusic/images/login.jpg' %}" alt="#"/></figure>
+
+    {% endblock %}

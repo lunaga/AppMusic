@@ -9,12 +9,26 @@
 {% endblock %}
 
 
+
 {% block contenidoquecambia %}
 
 
-<h2>Biografia de la banda: </h2>
+<h2>Datos de la banda: </h2>
+
+{% for biografias in biografia %} 
+
+          {{ biografias }}
+          <a href="{% url 'biografia_delete' biografias.id %}"> Borrar Biografia</a>
+          <a href="{% url 'biografia_update' biografias.id %}"> Modificar Biografia</a>
+    <br>
+
+          {% endfor %}
+<li class="btn btn-primary"> <a href="{% url 'biografia_add' %}">Agregar Biografia</a> </li>
 
 {% endblock %}
+
+
+
 
 {% block up %}
 
@@ -25,9 +39,9 @@
        <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
         <div class="box_text">
            <div class="titlepage">
-             <h2>Upcoming Concerts</h2>
+             <h2>Encuentra lo que buscas</h2>
            </div>
-           <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it lookIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look</p>
+           <p>Encuentra aqui a tu banda favorita y enterate de todos sus proyectos! Estaras atento a las nuevas bandas emergentes y a nuevos sonidos! Publica tu musica y comparte tus proyectos!</p>
            <a href="Javascript:void(0)">Read More</a>
          </div>
        </div> 

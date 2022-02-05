@@ -1,5 +1,5 @@
 {% extends 'AppMusic/padre.html' %}
-
+{% load static %}
 {% block titulo %}
 
    Inicio
@@ -10,6 +10,12 @@
 {% block contenidoquecambia %}
 
 
-<h2>Pagina de Inicio</h2>
+<h1>Bienvenidos!</h1>
+
+<h3>Pagina de inicio</h3>
+
+<figure><img src="{% static 'AppMusic/images/inicio.gif' %}" alt="#"/></figure>
+
+
 
 {% endblock %}

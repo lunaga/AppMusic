@@ -28,4 +28,4 @@ class  Biografia(Model):
     genero = CharField(max_length=40)
     links_banda = CharField(max_length=50)
     def __str__(self):
-        return f'Biografia {self.inicios} {self.genero} {self.links_banda}'
+        return f'Biografia {self.inicios}, Genero de la banda {self.genero}, Links {self.links_banda}'

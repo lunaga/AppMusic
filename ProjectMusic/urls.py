@@ -15,8 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from ProjectMusic.views import login_request, register
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('AppMusic.urls'))
+    path('', include('AppMusic.urls')),
+    path('login', login_request, name= 'login'),
+    path('register', register, name='register'),
+    path('logout', LogoutView.as_view(template_name = 'AppMusic/logout.html'), name= 'logout')
 ]
