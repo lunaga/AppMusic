@@ -1,0 +1,13 @@
+{% extends 'AppMusic/padre.html' %}
+{% load static %}
+
+{% block contenidoquecambia %}
+
+<ul>
+    <li>Nombre: {{integrantes.integrantes}} </li>
+    <li>Rol: {{integrantes.especializacion}} </li>
+            
+</ul>
+
+<li class="btn btn-primary"> <a href="{% url 'integrantes' %}">Volver</a> </li>
+{% endblock %}

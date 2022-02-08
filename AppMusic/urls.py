@@ -1,12 +1,13 @@
 from django.urls import path
-from AppMusic.views import  BandaDetailView, album, album_update, banda_delete, banda_formulario, banda_update, biografia, biografia_delete, biografia_update, busqueda_integrantes, inicio, integrantes, banda, album_formulario, integrantes_formulario, buscar, biografia_add, integrante_delete, album_delete, integrantes_update, BandaCreateView, BandaDeleteView, BandaListView, BandaUpdateView
+from AppMusic.views import BiografiaDetailView, BandaDetailView, agregar_avatar, album, album_update, banda_delete, banda_formulario, banda_update, biografia, biografia_delete, biografia_update, busqueda_integrantes, inicio, integrantes, banda, album_formulario, integrantes_formulario, buscar, biografia_add, integrante_delete, album_delete, integrantes_update, BandaCreateView, BandaDeleteView, BandaListView, BandaUpdateView, BiografiaDeleteView, BiografiaListView, BiografiaUpdateView, BiografiaCreateView, IntegrantesCreateView, IntegrantesDeleteView, IntegrantesDetailView, IntegrantesListView, IntegrantesUpdateView, AlbumCreateView, AlbumDeleteView, AlbumDetailView, AlbumListView, AlbumUpdateView, about
+
 
 urlpatterns = [
     path('inicio/', inicio, name = 'inicio'),
     #path('bandas/', banda, name = 'bandas'),
-    path('integrantes/', integrantes, name = 'integrantes_n'),
-    path('album/', album, name = 'albumes'),
-    path('biografia/', biografia, name = 'biografia'),
+    #path('integrantes/', integrantes, name = 'integrantes_n'),
+    #path('album/', album, name = 'album'),
+    #path('biografia/', biografia, name = 'biografia'),
     path('biografia/add', biografia_add, name = 'biografia_add'),
     path('bandaformulario/', banda_formulario, name = 'banda_formulario'),
     path('albumformulario/', album_formulario, name= 'album_formulario'),
@@ -14,16 +15,33 @@ urlpatterns = [
     path('busquedaintegrantes/', busqueda_integrantes, name= 'busqueda_integrantes'),
     path('busca/', buscar, name= 'buscar'),
     #path('bandas/delete/<id_banda>', banda_delete, name= 'banda_delete'),
-    path('integrante/delete/<id_integrante>', integrante_delete, name= 'integrante_delete'),
-    path('album/delete/<id_album>', album_delete, name= 'album_delete'),
-    path('biografia/delete/<id_biografia>', biografia_delete, name= 'biografia_delete'),
+    #path('integrante/delete/<id_integrante>', integrante_delete, name= 'integrante_delete'),
+    #path('album/delete/<id_album>', album_delete, name= 'album_delete'),
+    #path('biografia/delete/<id_biografia>', biografia_delete, name= 'biografia_delete'),
     #path('banda/update/<id_banda>', banda_update, name= 'banda_update'),
-    path('album/update/<id_album>', album_update, name= 'album_update'),
-    path('integrantes/update/<id_integrantes>', integrantes_update, name= 'integrantes_update'),
-    path('biografia/update/<id_biografia>', biografia_update, name= 'biografia_update'),
+    #path('album/update/<id_album>', album_update, name= 'album_update'),
+    #path('integrantes/update/<id_integrantes>', integrantes_update, name= 'integrantes_update'),
+    #path('biografia/update/<id_biografia>', biografia_update, name= 'biografia_update'),
     path('bandas/', BandaListView.as_view(), name = 'bandas'),
     path('bandas/add', BandaCreateView.as_view(), name = 'banda_add'),
     path('bandas/update/<pk>', BandaUpdateView.as_view(), name= 'banda_update'),
     path('bandas/delete/<pk>', BandaDeleteView.as_view(), name= 'banda_delete'),
-    path('bandas/view/<pk>', BandaDetailView.as_view(), name= 'banda_view')
+    path('bandas/view/<pk>', BandaDetailView.as_view(), name= 'banda_view'),
+    path('biografia/', BiografiaListView.as_view(), name = 'biografia'),
+    path('biografia/add', BiografiaCreateView.as_view(), name = 'biografia_add'),
+    path('biografia/update/<pk>', BiografiaUpdateView.as_view(), name= 'biografia_update'),
+    path('biografia/delete/<pk>', BiografiaDeleteView.as_view(), name= 'biografia_delete'),
+    path('biografia/view/<pk>', BiografiaDetailView.as_view(), name= 'biografia_view'),
+    path('integrantes/', IntegrantesListView.as_view(), name = 'integrantes'),
+    path('integrantes/add', IntegrantesCreateView.as_view(), name = 'integrante_add'),
+    path('integrantes/update/<pk>', IntegrantesUpdateView.as_view(), name= 'integrante_update'),
+    path('integrantes/delete/<pk>', IntegrantesDeleteView.as_view(), name= 'integrante_delete'),
+    path('integrantes/view/<pk>', IntegrantesDetailView.as_view(), name= 'integrante_view'), 
+    path('album/', AlbumListView.as_view(), name = 'album'),
+    path('album/add', AlbumCreateView.as_view(), name = 'album_add'),
+    path('album/update/<pk>', AlbumUpdateView.as_view(), name= 'album_update'),
+    path('album/delete/<pk>', AlbumDeleteView.as_view(), name= 'album_delete'),
+    path('album/view/<pk>', AlbumDetailView.as_view(), name= 'album_view'),
+    path('user/avatar/add', agregar_avatar, name= 'avatar_add'),
+    path('about/', about, name= 'about')
     ]

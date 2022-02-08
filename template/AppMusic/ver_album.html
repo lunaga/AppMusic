@@ -1,0 +1,14 @@
+{% extends 'AppMusic/padre.html' %}
+{% load static %}
+
+{% block contenidoquecambia %}
+
+<ul>
+    <li>Lanzamiento: {{album.fecha_lanzamiento}} </li>
+    <li>Nombre: {{album.nombre_album}} </li>
+    <li>Nro de canciones: {{album.canciones}} </li>
+    
+</ul>
+
+<li class="btn btn-primary"> <a href="{% url 'album' %}">Volver</a> </li>
+{% endblock %}

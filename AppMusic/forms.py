@@ -1,5 +1,5 @@
 import email
-from django.forms import Form, IntegerField, CharField, DateField, EmailField
+from django.forms import Form, IntegerField, CharField, DateField, EmailField, ImageField
 
 from AppMusic.models import Integrantes
 
@@ -22,3 +22,7 @@ class BiografiaForm(Form):
     inicios = CharField()
     genero = CharField()
     links_banda = CharField()
+    
+class AvatarFormulario(Form):
+    image = ImageField(required=True)
+    

@@ -13,11 +13,12 @@
 {% block contenidoquecambia %}
 
 
-<h2>Aqui se encuentran todas los albumes: </h2>
+<h2>Aqui se encuentran los album: </h2>
 
-    {% for album in albumes %} 
+    {% for album in album %} 
 
-       {{ album }}
+       <a href="{% url 'album_view' album.id %}">{{ album }}</a>
+
        <a href="{% url 'album_delete' album.id %}"> Eliminar Album</a>
        <a href="{% url 'album_update' album.id %}"> Modificar Album</a>
     <br>

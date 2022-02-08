@@ -15,13 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from ProjectMusic.views import login_request, register
+from ProjectMusic.views import editar_perfil, login_request, register
 from django.contrib.auth.views import LogoutView
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('AppMusic.urls')),
     path('login', login_request, name= 'login'),
     path('register', register, name='register'),
-    path('logout', LogoutView.as_view(template_name = 'AppMusic/logout.html'), name= 'logout')
+    path('logout', LogoutView.as_view(template_name = 'AppMusic/logout.html'), name= 'logout'),
+    path('user/edit', editar_perfil, name='user_editar')
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

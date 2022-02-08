@@ -15,9 +15,7 @@
 <h2>Las bandas ingresadas son: </h2>
 
     {% for banda in bandas %} 
-
-          {{ banda }}
-      
+      <a href="{% url 'banda_view' banda.id %}">{{ banda }} </a>
       <a href="{% url 'banda_delete' banda.id %}"> Eliminar Banda</a> 
       <a href="{% url 'banda_update' banda.id %}"> Modificar Banda</a>
     <br>

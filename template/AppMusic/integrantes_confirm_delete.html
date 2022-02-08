@@ -1,0 +1,25 @@
+{% extends 'AppMusic/padre.html' %}
+{% load static %}
+
+
+{% block contenidoquecambia %}
+
+<h3>Desea realmente borrar al integrante?</h3>      
+         
+
+<form action="" method="POST"> 
+
+    {% csrf_token %}
+
+         <ul>
+            <li>Nombre: {{integrantes.integrantes}} </li>
+            <li>Rol: {{integrantes.especializacion}} </li>
+            
+        
+         </ul>
+         <input type="submit" value="Borar">
+         <li class="btn btn-primary"> <a href="{% url 'integrantes' %}">Volver</a> </li>
+    </form>
+
+    
+{% endblock %}

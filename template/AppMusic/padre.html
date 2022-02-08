@@ -66,13 +66,18 @@
                       <li class="active"> <a href="{% url 'inicio' %}">Inicio</a> </li>
                   
                       <li> <a class="navbar-brand" href="{% url 'bandas' %}">Bandas</a> </li>
-                      <li> <a class="navbar-brand" href="{% url 'albumes' %}">Album </a> </li>
-                      <li> <a class="navbar-brand" href="{% url 'integrantes_n' %}">Integrantes</a> </li>
+                      <li> <a class="navbar-brand" href="{% url 'album' %}">Album </a> </li>
+                      <li> <a class="navbar-brand" href="{% url 'integrantes' %}">Integrantes</a> </li>
                       <li> <a class="navbar-brand" href="{% url 'biografia' %}">Biografia</a> </li>
-      
+                      {% if not user.is_authenticated %} 
+                        
                       <li > <a   href="{% url 'login' %}">Login</a> </li>
-                      <li >  <a href="{% url 'logout' %}">Logout</a> </li>
-                      <li  > <a  class="last_manu" href="#"><img src="{% static 'AppMusic/images/search_icon.png' %}" alt="#" /></a> </li>
+                      {% else %}
+                        <a class= "text-muted small mb -lg-0">Hola {{ user.username }}!</a>
+                        <img style="height:30px;" src="{{avatar_url}}" height="14px"/>
+                        <li > <a href="{% url 'logout' %}">Logout</a> </li>
+                        <li > <a class="last_manu" href="#"><img src="{% static 'AppMusic/images/search_icon.png' %}" alt="#" /></a> </li>
+                      {% endif %}
                       
                      </ul>
                    </nav>
@@ -179,6 +184,8 @@
                                     <!-- Bloque de acerca de nosotros -->
 
 <!-- about  -->
+
+
 <div id="about" class="about">
   <div class="container">
     <div class="row display_boxflex">
@@ -188,7 +195,7 @@
           <p>Buscamos crear un sitio web donde bandas de musica tengan su espacio para publicar sus trabajos. 
             Una pagina pura y exclusiva para subir proyectos musicales ya sean de grupos o solistas.
           </p>
-          <a href="Javascript:void(0)">Read More</a>
+          <li> <a class="navbar-brand" href="{% url 'about' %}">Leer Mas</a> </li>
         </div>
       </div>
       <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
@@ -200,6 +207,10 @@
 
   </div>
 </div>
+
+
+
+
 <!-- end abouts -->
 
 {% block up %}

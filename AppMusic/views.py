@@ -9,17 +9,25 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import Context, Template, loader
 from django.urls import reverse_lazy
-from AppMusic.forms import BandaForm, AlbumForm, IntegrantesForm, BiografiaForm
+from AppMusic.forms import AvatarFormulario, BandaForm, AlbumForm, IntegrantesForm, BiografiaForm
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
-from AppMusic.models import Banda, Album, Integrantes, Biografia
+from AppMusic.models import Avatar, Banda, Album, Integrantes, Biografia
+
+def about(request):
+    return render(request, 'AppMusic/about.html')
 
 @login_required
 def inicio(request):
-    return render(request, 'AppMusic/inicio.html')
+    avatares = Avatar.objects.filter(user=request.user)
+    if avatares:
+        avatar_url = avatares.last().imagen.url
+    else: 
+        avatar_url=''
+    return render(request, 'AppMusic/inicio.html', {'avatar_url': avatar_url})
 
 @login_required
 def banda(request):
@@ -34,7 +42,7 @@ def integrantes(request):
 @login_required
 def album(request):
     return render(request, 'AppMusic/album.html',
-    {'albumes': Album.objects.all()})
+    {'album': Album.objects.all()})
 
 @login_required
 def biografia(request):
@@ -72,7 +80,7 @@ def album_formulario(request):
         if formulario.is_valid():
             data = formulario.cleaned_data
             Album.objects.create(fecha_lanzamiento=data ['fecha_lanzamiento'], nombre_album=data ['nombre_album'], canciones=data['canciones'])
-            return redirect('albumes')
+            return redirect('album')
     else:
         formulario = AlbumForm()
     return render(request, 'AppMusic/albumformulario.html', {'formulario' : formulario})
@@ -83,7 +91,7 @@ def integrantes_formulario(request):
         if formulario.is_valid():
             data = formulario.cleaned_data
             Integrantes.objects.create(integrantes=data ['integrantes'], especializacion=data ['especializacion'])
-            return redirect('integrantes_n')
+            return redirect('integrantes')
     else:
         formulario = IntegrantesForm()
     return render(request, 'AppMusic/integrantesformulario.html', {'formulario' : formulario})
@@ -205,7 +213,7 @@ def biografia_update(request, id_biografia):
 
 #bloque de clases basadas en vistas
 
-
+#Vistas de Bandas
 class BandaListView(LoginRequiredMixin, ListView):
     model= Banda
     template_name = 'AppMusic/bandas.html'
@@ -231,6 +239,109 @@ class BandaUpdateView(UpdateView):
 class BandaDeleteView(DeleteView):
     model = Banda
     success_url = reverse_lazy('bandas')
-    template_name = 'AppMusic/ver_bandas.html'
-    # template name toma como defaul bandas_confirm_delete.html  
+    #template_name = 'AppMusic/ver_bandas.html'
+    #template name toma como defaul bandas_confirm_delete.html  
     
+
+#Vistas de Biografia
+
+class BiografiaListView(LoginRequiredMixin, ListView):
+    model= Biografia
+    template_name = 'AppMusic/biografia.html'
+    context_object_name = 'biografia'
+    
+
+class BiografiaDetailView(DetailView):
+    model= Biografia
+    template_name = 'AppMusic/ver_biografia.html'
+    
+class BiografiaCreateView(CreateView):
+    model= Biografia
+    success_url = reverse_lazy('biografia')
+    fields = ['inicios', 'genero', 'links_banda'] 
+    template_name = 'AppMusic/biografiaform.html'
+    
+class BiografiaUpdateView(UpdateView):
+    model= Biografia
+    success_url = reverse_lazy('biografia')
+    fields = ['inicios', 'genero', 'links_banda']
+    template_name = 'AppMusic/biografiaform.html'
+    
+class BiografiaDeleteView(DeleteView):
+    model = Biografia
+    success_url = reverse_lazy('biografia')
+   
+
+
+#Bloque de vistas de integrantes
+
+class IntegrantesListView(LoginRequiredMixin, ListView):
+    model= Integrantes
+    template_name = 'AppMusic/integrantes.html'
+    context_object_name = 'integrantes'
+    
+
+class IntegrantesDetailView(DetailView):
+    model= Integrantes
+    template_name = 'AppMusic/ver_integrantes.html'
+    
+class IntegrantesCreateView(CreateView):
+    model= Integrantes
+    success_url = reverse_lazy('integrantes')
+    fields = ['integrantes', 'especializacion'] 
+    template_name = 'AppMusic/integrantesform.html'
+    
+class IntegrantesUpdateView(UpdateView):
+    model= Integrantes
+    success_url = reverse_lazy('integrantes')
+    fields = ['integrantes', 'especializacion']
+    template_name = 'AppMusic/integrantesform.html'
+    
+class IntegrantesDeleteView(DeleteView):
+    model = Integrantes
+    success_url = reverse_lazy('integrantes')
+    
+#Bloque de vistas para Album
+
+class AlbumListView(LoginRequiredMixin, ListView):
+    model= Album
+    template_name = 'AppMusic/album.html'
+    context_object_name = 'album'
+    
+
+class AlbumDetailView(DetailView):
+    model= Album
+    template_name = 'AppMusic/ver_album.html'
+    
+class AlbumCreateView(CreateView):
+    model= Album
+    success_url = reverse_lazy('album')
+    fields = ['fecha_lanzamiento', 'nombre_album','canciones'] 
+    template_name = 'AppMusic/albumform.html'
+    
+class AlbumUpdateView(UpdateView):
+    model= Album
+    success_url = reverse_lazy('album')
+    fields = ['fecha_lanzamiento', 'nombre_album','canciones']
+    template_name = 'AppMusic/albumform.html'
+    
+class AlbumDeleteView(DeleteView):
+    model = Album
+    success_url = reverse_lazy('album')
+
+#Bloque de Avatar
+
+
+@login_required    
+def agregar_avatar(request):
+    if request.method == 'POST':
+        formulario = AvatarFormulario(request.POST, request.FILES)
+        
+        if formulario.is_valid():
+            avatar = Avatar(user=request.user, imagen=formulario.cleaned_data['imagen'])
+            avatar.save()
+            return redirect('inicio')
+            
+    else:
+        formulario = AvatarFormulario()
+    return render(request, 'AppMusic/crear_avatar.html', {'form': formulario})

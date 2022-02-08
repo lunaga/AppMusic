@@ -1,0 +1,44 @@
+{% extends 'AppMusic/padre.html' %}
+{% load static %}
+{% block titulo %}
+
+   About
+
+{% endblock %}
+
+{% block contenidoquecambia %}
+
+
+<div id="about" class="about">
+  <div class="container">
+    <div class="row display_boxflex">
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+        <div class="about-box">
+          <h2>A cerca de nosotros</h2>
+          <p>
+            Integrante: Luna Alan Gabriel, estudainte de CoderHouse del curso de Python.
+            conocimientos previso al curso = Nulo.
+            Profesor: Martin Gotelli
+            Tutora: Carla Lopez
+
+            Esta es mi primera vez desarrollando un Blog y mi primera vez programando.
+
+            https://github.com/lunaga
+            
+          </p>
+          <a href="{% url 'inicio' %}">Volver al Inicio</a> </li>
+        </div>
+      </div>
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+        <div class="about-box">
+          <figure><img src="{% static 'AppMusic/images/perfil.jpg' %}" alt="#" /></figure>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

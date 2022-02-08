@@ -5,7 +5,7 @@
 {% block contenidoquecambia %}
 
 <h3>Desea realmente borrar la banda?</h3>      
-         <input type="submit" value="Borar">
+         
 
 <form action="" method="POST"> 
 
@@ -18,8 +18,8 @@
             <li>Nombre: {{banda.email}} </li>
         
          </ul>
-         
-
+         <input type="submit" value="Borar">
+         <li class="btn btn-primary"> <a href="{% url 'bandas' %}">Volver</a> </li>
     </form>
 
     

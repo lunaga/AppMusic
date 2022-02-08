@@ -108,9 +108,10 @@
 
 {% for integrante in integrantes %} 
 
-{{ integrante }}
+<a href="{% url 'integrante_view' integrante.id %}">{{ integrante }}</a>
 <a href="{% url 'integrante_delete' integrante.id %}"> Eliminar Integrante</a>
-<a href="{% url 'integrantes_update' integrante.id %}"> Modificar Integrante</a>
+<a href="{% url 'integrante_update' integrante.id %}"> Modificar Integrante</a>
+
 
 <br>
 
@@ -118,7 +119,6 @@
 {% endfor %}
 
 <li class="btn btn-primary"> <a href="{% url 'integrantes_formulario' %}">Agregar Integrante</a> </li>
-
 
 {% endblock %}
 

@@ -1,6 +1,6 @@
-from django.db.models import Model
+from django.db.models import Model, ForeignKey, CASCADE, ImageField
 from django.db.models.fields import CharField, EmailField, DateField, IntegerField
-
+from django.contrib.auth.models import User
 class Banda(Model):
     Nombre_banda = CharField(max_length=40)
     nacimiento_banda = DateField()
@@ -29,3 +29,9 @@ class  Biografia(Model):
     links_banda = CharField(max_length=50)
     def __str__(self):
         return f'Biografia {self.inicios}, Genero de la banda {self.genero}, Links {self.links_banda}'
+
+class Avatar(Model):
+    user = ForeignKey(User, on_delete=CASCADE)
+    
+    imagen = ImageField(upload_to='avatares', null=True, blank=True)
+     

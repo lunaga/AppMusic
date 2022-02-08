@@ -1,0 +1,15 @@
+{% extends 'AppMusic/padre.html' %}
+{% load static %}
+
+{% block contenidoquecambia %}
+
+<ul>
+    <li>inicios: {{biografia.inicios}} </li>
+    <li>genero: {{biografia.genero}} </li>
+    <li>links: {{biografia.links_banda}} </li>
+</ul>
+
+<li class="btn btn-primary"> <a href="{% url 'biografia' %}">Volver</a> </li>
+
+{% endblock %}
+

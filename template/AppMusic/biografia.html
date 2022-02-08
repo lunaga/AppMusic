@@ -17,7 +17,7 @@
 
 {% for biografias in biografia %} 
 
-          {{ biografias }}
+          <a href="{% url 'biografia_view' biografias.id %}">{{ biografias }}
           <a href="{% url 'biografia_delete' biografias.id %}"> Borrar Biografia</a>
           <a href="{% url 'biografia_update' biografias.id %}"> Modificar Biografia</a>
     <br>

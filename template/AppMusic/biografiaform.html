@@ -1,0 +1,37 @@
+{% extends 'AppMusic/padre.html' %}
+{% load static %}
+
+
+
+{% block titulo %}
+
+   biografia
+
+{% endblock %}
+
+
+{% block contenidoquecambia %}
+
+
+{% if form.errors %}
+
+    <p style="color: red;">{{ form.errors }}</p>
+
+{% endif %}
+
+    <form action="" method="POST"> 
+
+        {% csrf_token %}
+
+       <table>
+
+            {{ form.as_table }}
+
+       </table>
+
+    <input type="submit" value="Enviar">
+
+    </form>
+
+
+{% endblock %}
